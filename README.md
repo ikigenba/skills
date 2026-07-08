@@ -13,14 +13,20 @@ npx skills@latest add ikigenba/skills --skill='*' --copy --yes --agent claude-co
 code is generated from it. `ralph` is the generic executor it rides on; `ralph`
 knows nothing about `ikispec`.
 
+The authoring session is three spoken moves: **`open-spec`** (open the session,
+scoped to `project/*`, and describe desired outcomes) → **`grill-me`**
+(interrogate until every unknown is settled) → **`seal-spec`** (write the
+settled goal into the spec, ready for the next `ralph` run).
+
 | Skill | Layer | What it is |
 | --- | --- | --- |
-| `ikispec` | spec format | The authoritative output shapes, authority boundaries, and hard invariants for the `project/` spec (product, research, design, plan). |
-| `author-ikispec` | authoring | One automated pass that writes a settled goal into all four `project/` docs and mints requirement ids. |
+| `ikispec` | spec format | The authoritative output shapes, authority boundaries, and hard invariants for the `project/` spec (product, research, design, plan). Loaded by the authoring skills; not spoken directly. |
+| `open-spec` | authoring | Opens a spec-authoring session: scope limited to `project/*`, docs-only, discussion of desired outcomes. |
+| `grill-me` | authoring | Interrogates a goal one question at a time until it's settled, before writing the spec. |
+| `seal-spec` | authoring | One automated pass that writes a settled goal into all four `project/` docs and mints requirement ids. |
 | `create-gather-build-verify-prompts` | adapter | Generates the ralph gather → build → verify loop prompts that build from an `ikispec` spec. |
 | `create-audit-prompts` | adapter | Generates the ralph audit loop that re-checks test coverage of every requirement id. |
 | `ralph` | executor | Orientation map of the spec-agnostic `ralph` harness that runs the loops. |
-| `grillme` | utility | Interrogates a goal one question at a time until it's settled, before writing the spec. |
 
 ## Prerequisites (external tools)
 
