@@ -1,14 +1,14 @@
 ---
-name: write-spec
-description: Explicit workflow for writing a settled goal into the project/ spec in one automated pass. Use only when the user explicitly invokes write-spec, says $write-spec, or clearly asks to write the settled goal into project/product, project/research, project/design, and project/plan.
+name: author-ikispec
+description: Explicit workflow for writing a settled goal into the project/ spec in one automated pass. Use only when the user explicitly invokes author-ikispec, says $author-ikispec, or clearly asks to write the settled goal into project/product, project/research, project/design, and project/plan.
 ---
-First use the project-local `$mgspec` skill if it is not already in
+First use the project-local `$ikispec` skill if it is not already in
 context. It is the single source of truth for every output shape and hard
 invariant below; do not paraphrase shapes from memory.
 
-# Write Spec
+# Author ikispec
 
-**Write-spec is the "go do the work" step.** It assumes the goal is already settled —
+**Authoring the ikispec is the "go do the work" step.** It assumes the goal is already settled —
 discussed in this session, usually sharpened by a `$grillme` interrogation —
 and turns that settled goal into the binding spec: product aligned, research
 captured, design decided and minted, plan phases appended. It writes the docs;
@@ -19,15 +19,15 @@ reasonable calls, write the docs, append the phases, and report. **Do not stop
 to check in.** The only thing that halts you is a **true gap you cannot resolve
 without a human** (see the last section). Absent that, finish the run.
 
-Write-spec trades interaction for speed, never correctness for speed: every shape
-and hard invariant in `mgspec` holds exactly — the authority boundaries,
+Authoring trades interaction for speed, never correctness for speed: every shape
+and hard invariant in `ikispec` holds exactly — the authority boundaries,
 the scope boundary, real minted ids, rewrite-in-place for product/research/
 design, the append-only plan, deterministic exit conditions, and total coverage
 of the id denominator.
 
 **Greenfield is the same run.** When `project/` is empty or absent, "current
 state" is simply nothing, "align" means "write from scratch", and the appended
-phases start at 01 — create the full structure from the shapes in `mgspec`,
+phases start at 01 — create the full structure from the shapes in `ikispec`,
 including the thin `project/README.md` workspace map. (`project/loops/` is not
 yours: a prompt-generator workflow writes it, as a separate,
 operator-invoked step after the spec exists.)
@@ -72,7 +72,7 @@ operator-invoked step after the spec exists.)
    a single fresh build-turn context, and add one
    `- Phase NN ⬜ realizes <ids> — <objective>` line per phase to `STATUS.md`.
    Never touch finished phases. Before finishing, run the coverage check from
-   `mgspec`: every design id in exactly one phase.
+   `ikispec`: every design id in exactly one phase.
 6. **Workspace map.** If the structure changed (greenfield, or a folder
    added/removed), write/update the thin `project/README.md` to match.
 7. **Report.** List every path written, the Decisions added/changed with their
@@ -85,14 +85,14 @@ operator-invoked step after the spec exists.)
   action — never start it on your own initiative.
 - **Do NOT write, regenerate, or edit `project/loops/`.** The loop prompts and
   `loops/README.md` belong to the prompt-generator workflows. There
-  is no step in a write-spec run that touches a loop file.
-- Everything else is `mgspec`' law: scope boundary, authority boundaries,
+  is no step in a author-ikispec run that touches a loop file.
+- Everything else is `ikispec`' law: scope boundary, authority boundaries,
   minted ids, current-statement rewrites, append-only plan, deterministic exit
   conditions, total id coverage.
 
 ## The only reason to stop before finishing
 
-Write-spec runs to completion automatically. It makes the reasonable calls without
+Authoring runs to completion automatically. It makes the reasonable calls without
 asking and never pauses just to confirm. Stop and ask the operator **only** when
 you hit a **true gap you cannot resolve without a human**: a genuinely
 load-bearing fork — one that changes the shape of what gets built — that the

@@ -1,6 +1,6 @@
 interface:
-  display_name: "mgspec"
+  display_name: "ikispec"
   short_description: "The project/ spec output shapes, authority boundaries, and hard invariants."
-  default_prompt: "$mgspec"
+  default_prompt: "$ikispec"
 policy:
   allow_implicit_invocation: false

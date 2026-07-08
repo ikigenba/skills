@@ -2,11 +2,11 @@
 name: create-gather-build-verify-prompts
 description: Explicit workflow for creating or regenerating the gather-build-verify build-loop prompts under project/loops. Use only when the user explicitly invokes this skill or clearly asks to create or regenerate the gather/build/verify loop prompts.
 ---
-First use the project-local `$mgspec` skill (the `project/` artifact contracts), then proceed.
+First use the project-local `$ikispec` skill (the `project/` artifact contracts), then proceed.
 
 Create the **three-prompt build loop** an unattended harness (`ralph`) re-invokes with a **fresh context** every turn to build the project one phase at a time: `project/loops/gather.md`, `project/loops/build.md`, and `project/loops/verify.md`. These three prompts share the ephemeral `project/loops/brief.md` seam. This workflow also writes **`project/loops/run`** — the executable operator wrapper — and **`project/loops/README.md`** — the author-facing overview of the installed loop (see the last section).
 
-Assume the `project/` structure already exists, in the shapes `mgspec` defines: the product doc, optional research, the **split, addressable design** (spine + `INDEX.md` manifest + one self-contained `DNN.md` per Decision, each ending in minted `R-XXXX-XXXX` Verification ids), and the **split, addressable plan** (static rules + the `STATUS.md` manifest — the **only** home of the `⬜`/`✅` markers — + one `phase-NN.md` body per phase). This workflow only writes the loop files under `project/loops/`; it does not build anything and never edits the spec.
+Assume the `project/` structure already exists, in the shapes `ikispec` defines: the product doc, optional research, the **split, addressable design** (spine + `INDEX.md` manifest + one self-contained `DNN.md` per Decision, each ending in minted `R-XXXX-XXXX` Verification ids), and the **split, addressable plan** (static rules + the `STATUS.md` manifest — the **only** home of the `⬜`/`✅` markers — + one `phase-NN.md` body per phase). This workflow only writes the loop files under `project/loops/`; it does not build anything and never edits the spec.
 
 ## The loop's shape (what you are emitting)
 

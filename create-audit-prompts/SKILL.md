@@ -2,11 +2,11 @@
 name: create-audit-prompts
 description: Explicit workflow for creating or regenerating the single-prompt audit loop under project/loops. Use only when the user explicitly invokes this skill or clearly asks to create or regenerate the coverage audit prompt.
 ---
-First use the project-local `$mgspec` skill (the `project/` artifact contracts), then proceed.
+First use the project-local `$ikispec` skill (the `project/` artifact contracts), then proceed.
 
 Create the **single-prompt audit loop** an unattended harness (`ralph`) re-invokes with a **fresh context** every turn to adversarially audit the project's test coverage one design Decision at a time: `project/loops/audit.md`. The audit answers a stronger question than "does a tagged test exist?" — for every minted `R-XXXX-XXXX` id it judges whether the tagged test *actually proves the behavior the design states*, escalating to mutation testing in a scratch worktree when reading alone cannot settle whether the test can fail. This workflow also updates **`project/loops/README.md`** with an audit-loop section (see the last section).
 
-Assume the `project/` structure already exists in the shapes `mgspec` defines. This workflow only writes `project/loops/audit.md` and the README section; it does not audit anything, never edits the spec, and never touches the build loop's prompts.
+Assume the `project/` structure already exists in the shapes `ikispec` defines. This workflow only writes `project/loops/audit.md` and the README section; it does not audit anything, never edits the spec, and never touches the build loop's prompts.
 
 ## The loop's shape (what you are emitting)
 

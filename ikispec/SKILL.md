@@ -1,5 +1,5 @@
 ---
-name: mgspec
+name: ikispec
 description: "The project/ spec contracts: authoritative output shapes of product, research, design, and plan; authority boundaries; and hard invariants every writer keeps. Use before discussing, grilling, writing the spec, or generating workflows that read or write the project/ spec."
 ---
 
@@ -7,7 +7,7 @@ description: "The project/ spec contracts: authoritative output shapes of produc
 
 This skill is the **single source of truth for what the `project/` tree looks
 like**. Everything that writes or reasons about the spec or spec-authoring
-workflow — the session discussion, a `$grillme` interrogation, `$write-spec`, and
+workflow — the session discussion, a `$grillme` interrogation, `$author-ikispec`, and
 the loop-prompt generator workflows — takes the shapes below from here and
 restates them nowhere.
 
@@ -19,12 +19,12 @@ one writer:
 
 | folder | what's in it | written by |
 |---|---|---|
-| `product/` | `README.md` — the *why*: problem, users, scope, promises, success criteria | `$write-spec` (rewritten in place) |
-| `research/` | `research.md` — collected external ground truth that design references | `$write-spec` (rewritten in place; optional) |
-| `design/` | `README.md` (spine) + `INDEX.md` (manifest) + `DNN.md` (one per Decision) | `$write-spec` (rewritten in place) |
-| `plan/` | `README.md` (rules) + `STATUS.md` (manifest + `⬜`/`✅` markers) + `phase-NN.md` (one per phase) | `$write-spec` (append-only) |
+| `product/` | `README.md` — the *why*: problem, users, scope, promises, success criteria | `$author-ikispec` (rewritten in place) |
+| `research/` | `research.md` — collected external ground truth that design references | `$author-ikispec` (rewritten in place; optional) |
+| `design/` | `README.md` (spine) + `INDEX.md` (manifest) + `DNN.md` (one per Decision) | `$author-ikispec` (rewritten in place) |
+| `plan/` | `README.md` (rules) + `STATUS.md` (manifest + `⬜`/`✅` markers) + `phase-NN.md` (one per phase) | `$author-ikispec` (append-only) |
 | `loops/` | the generated build-loop prompts + `README.md` describing the installed loop | a prompt-generator workflow |
-| `README.md` | the workspace map: this folder table and pointers — thin and static | `$write-spec` |
+| `README.md` | the workspace map: this folder table and pointers — thin and static | `$author-ikispec` |
 
 The loop prompts and `loops/README.md` are **not** spec artifacts — they are
 generated from the finished spec by a generator workflow and describe whichever
@@ -56,7 +56,7 @@ boundary is load-bearing — it is what keeps the three from overlapping.
   build/edit/test outside it. Cross-module work is a signal the work is
   misfiled, not a license to cross.
 - **Authoring write boundary.** Spec authoring is a **docs-only mode**. During
-  session discussion, `$grillme`, `$write-spec`, and loop-prompt generator
+  session discussion, `$grillme`, `$author-ikispec`, and loop-prompt generator
   workflows, the only permitted writes are the `project/` artifacts named in
   the workspace table above, by their listed writers. Authors may describe
   future implementation paths such as `cmd/`, `internal/`, `go.mod`, `Makefile`,
@@ -341,6 +341,6 @@ The top-level README is a **map, not a manual**: the folder table (as at the
 top of this skill, adapted to the project), who writes each artifact, where the
 codebase root is, and a pointer to `project/loops/README.md` for how the
 installed build loop works. It carries **no** loop mechanics, no brief schema,
-and no restatement of the shapes above. `$write-spec` writes it and keeps it true
+and no restatement of the shapes above. `$author-ikispec` writes it and keeps it true
 when the structure changes; the loop overview belongs to the generator workflow
 that installed the loop.

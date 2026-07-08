@@ -1,6 +1,6 @@
 ---
 name: ralph
-description: "Orientation map of the ralph autonomous-build family: interactive authoring, unattended execution, the ralph executor, and pointers to the project-local skills and generated prompts. Use for orientation around ralph, project/ specs, write-spec, build loops, and audit loops."
+description: "Orientation map of the ralph autonomous-build family: interactive authoring, unattended execution, the ralph executor, and pointers to the project-local skills and generated prompts. Use for orientation around ralph, project/ specs, author-ikispec, build loops, and audit loops."
 ---
 
 # Ralph
@@ -29,9 +29,9 @@ mechanical execution.
 
 | piece | what it is | contract lives in |
 | --- | --- | --- |
-| `$mgspec` skill | the `project/` artifact contracts: product, research, design, plan shapes + hard invariants | `.agents/skills/mgspec/SKILL.md` |
+| `$ikispec` skill | the `project/` artifact contracts: product, research, design, plan shapes + hard invariants | `.agents/skills/ikispec/SKILL.md` |
 | `$grillme` skill | generic one-question-at-a-time interrogation, used to sharpen the goal before writing | `.agents/skills/grillme/SKILL.md` |
-| `$write-spec` skill | the "go do the work" step: one automated pass writing product/research/design/plan per `mgspec` | `.agents/skills/write-spec/SKILL.md` |
+| `$author-ikispec` skill | the "go do the work" step: one automated pass writing product/research/design/plan per `ikispec` | `.agents/skills/author-ikispec/SKILL.md` |
 | prompt-generator skills | loop generators; each emits one loop topology (e.g. `$create-gather-build-verify-prompts`) + `project/loops/README.md` describing the installed loop | `.agents/skills/create-*/SKILL.md` |
 | `project/` | the spec itself — the single source of truth the loop builds from | `project/README.md` (the workspace map) |
 | `project/loops/` | the generated prompts + the installed loop's overview | `project/loops/README.md` |
@@ -51,7 +51,7 @@ converse (user story / constraints; research as needed)
    │
 $grillme             interrogate to shared understanding
    │
-$write-spec              one pass: product · research · design (mint ids) · plan (append phases)
+$author-ikispec              one pass: product · research · design (mint ids) · plan (append phases)
    │
 $create-gather-build-verify-prompts     (once per project, or when the loop design changes)
    │
