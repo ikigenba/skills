@@ -1,0 +1,6 @@
+interface:
+  display_name: "mgspec"
+  short_description: "The project/ spec output shapes, authority boundaries, and hard invariants."
+  default_prompt: "$mgspec"
+policy:
+  allow_implicit_invocation: false
