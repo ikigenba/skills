@@ -4,7 +4,7 @@ Agent skills for **mgspec**, the ikigenba spec-first build system. Installable
 into Claude and Codex with the [`skills`](https://skills.sh) CLI:
 
 ```sh
-npx skills@latest add ikigenba/skills --agent claude-code codex
+npx skills@latest add ikigenba/skills --skill='*' --copy --yes --agent claude-code codex
 ```
 
 ## What's here
