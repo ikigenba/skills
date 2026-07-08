@@ -72,7 +72,10 @@ operator-invoked step after the spec exists.)
    a single fresh build-turn context, and add one
    `- Phase NN ⬜ realizes <ids> — <objective>` line per phase to `STATUS.md`.
    Never touch finished phases. Before finishing, run the coverage check from
-   `ikispec`: every design id in exactly one phase.
+   `ikispec`: every *current* design id realized in exactly one phase (the
+   design-only `comm -23` difference is empty). Coverage is one-directional —
+   the plan may hold retired ids from frozen phases; never delete one to chase
+   parity.
 6. **Workspace map.** If the structure changed (greenfield, or a folder
    added/removed), write/update the thin `project/README.md` to match.
 7. **Report.** List every path written, the Decisions added/changed with their

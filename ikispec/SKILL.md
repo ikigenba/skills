@@ -93,13 +93,30 @@ boundary is load-bearing — it is what keeps the three from overlapping.
   phase's own `project/` docs also contain, so it can never return empty).
   Structural/docs-only phases too: a green build plus a `project/`-excluded
   grep or a named smoke, never a prose claim.
-- **Total coverage of the denominator.** The phases collectively assign
-  **every** design Verification id to **exactly one** phase — no id unassigned,
-  none split, none duplicated. Verify mechanically:
-  `grep -hoE 'R-[A-Z0-9]{4}-[A-Z0-9]{4}' project/design/*.md | sort -u` must
-  equal the same grep over `project/plan/phase-*.md`. Because finished phases
-  are frozen, an id minted later can only be covered by a newly appended phase
-  — completeness must be right at authoring time.
+- **Total coverage of the denominator.** The phases collectively realize
+  **every** *current* design Verification id in **exactly one** phase — no
+  current id unassigned, none split, none duplicated. Coverage is
+  **one-directional**: design (rewritten in place, the current statement) is the
+  denominator; the plan (append-only history) must cover all of it. Verify
+  mechanically that no current design id is missing from the plan — the
+  design-only difference must be empty:
+
+  ```
+  comm -23 <(grep -hoE 'R-[A-Z0-9]{4}-[A-Z0-9]{4}' project/design/*.md   | sort -u) \
+           <(grep -hoE 'R-[A-Z0-9]{4}-[A-Z0-9]{4}' project/plan/phase-*.md | sort -u)
+  ```
+
+  This prints the ids in design not yet covered by any phase; **empty output is
+  the pass condition.** The reverse direction is deliberately **not** checked:
+  the plan may — and over a long-lived project will — contain ids that are no
+  longer in design. Those are **retired requirements** — a behavior that was
+  built when its id was current, then dropped from design when it stopped
+  applying. Its `phase-NN.md` is frozen and keeps the id forever as the record
+  of that work; **never delete a retired id from the plan to chase parity** —
+  doing so would violate the append-only invariant. An id present in the plan
+  but absent from design is expected, not a defect. Because finished phases are
+  frozen, a current id minted later can only be covered by a newly appended
+  phase — coverage of the current denominator must be right at authoring time.
 
 ## `project/product/README.md` — the product shape
 
@@ -292,7 +309,9 @@ and reads exactly one phase file, never the whole history:
   what's built, that the plan is append-only, and how to extend it (update
   product and design in place, then append a new `phase-NN.md` + `STATUS.md`
   line — never edit a finished phase except to flip its marker). State the
-  **coverage invariant** here too (every id in exactly one phase; later ids
+  **coverage invariant** here too (every *current* design id realized in exactly
+  one phase; coverage is one-directional, so the plan may also carry retired ids
+  from frozen phases whose behavior has since left design; later current ids
   need a newly appended phase).
 - **One phase = one package = one build-turn context** — the sizing paragraph
   above.
