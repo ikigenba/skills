@@ -62,6 +62,8 @@ operator-invoked step after the spec exists.)
 4. **Design — decide, mint, record.** For each new/changed behavior make the
    architectural call yourself (seams, interfaces, types, naming, test
    strategy). **Mint ids with `idgen -n <count> -p R` before writing them.**
+   (`idgen` is this repository's own id-minting CLI, built from its source:
+   `-n` is how many ids to mint, `-p R` sets the `R-` prefix design ids use.)
    Write/rewrite the affected `DNN.md` (new Decision → new file; changed
    Decision → rewrite in place) and **regenerate `INDEX.md`** (Decisions list +
    sorted id→Decision map). Every verifiable element states how it's tested; a
@@ -90,6 +92,16 @@ operator-invoked step after the spec exists.)
 - **Do NOT write, regenerate, or edit `project/loops/`.** The loop prompts and
   `loops/README.md` belong to the prompt-generator workflows. There
   is no step in a seal-spec run that touches a loop file.
+- **Do NOT recommend regenerating `project/loops/` after an append/extension.**
+  The installed loop prompts are **reusable across phases** — they resolve the
+  next phase through `STATUS.md` on every run, so appending a phase (or changing
+  spec content) does not stale them. Regeneration is warranted **only** when the
+  loop *topology or conventions* change: a new prompt sequence, a changed
+  done-bar, model front-matter, or a restructured `project/` layout the prompts
+  reference. When the loop is already installed and this run was a plain
+  extension, the next step is simply to **run the existing loop** — never to
+  regenerate it. (Mirrors ralph's rule: generate "once per project, or when the
+  loop design changes.")
 - Everything else is `ikispec`' law: scope boundary, authority boundaries,
   minted ids, current-statement rewrites, append-only plan, deterministic exit
   conditions, total id coverage.

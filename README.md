@@ -42,3 +42,23 @@ them separately and make sure both are on `PATH`:
 
 Each skill is a directory with a `SKILL.md`. Skills that expose a first-class
 Codex invocation also carry an `agents/openai.yaml` describing their interface.
+
+## Supply-chain scanner notes
+
+Automated scanners (e.g. Socket, run by the `skills` installer) flag two skills
+as anomalies. Both are **known and accepted**, and neither is a detection of a
+malicious payload:
+
+- **`seal-spec`** (Socket MEDIUM) and **`create-audit-prompts`** (Socket LOW)
+  are flagged for describing autonomous command execution, naming external
+  binaries (`idgen`, `git worktree`, `mktemp`), and depending on the sibling
+  `ikispec` skill ("transitive trust").
+
+These are inherent, intended properties of the skills, not vulnerabilities:
+`idgen` and `ralph` are this project's own tools (see Prerequisites above),
+`ikispec` is the sibling skill in this same repo, and the `git worktree` /
+mutation-testing mechanics in `create-audit-prompts` are legitimate audit
+mechanics run in a scratch worktree that is always torn down. The scanners grade
+both LOW/MEDIUM with the malicious-payload finding explicitly *unchecked*. There
+is no pinned version to attest for `idgen`: it is built from its own spec, so its
+provenance is the linked source repo, not a published package.
