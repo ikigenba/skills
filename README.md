@@ -4,8 +4,13 @@ Agent skills for **ikispec**, the ikigenba spec-first build system. Installable
 into Claude and Codex with the [`skills`](https://skills.sh) CLI:
 
 ```sh
-npx skills@latest add ikigenba/skills --skill='*' --copy --yes --agent claude-code codex
+npx skills@latest add ikigenba/skills --skill='*' --yes --agent claude-code codex
 ```
+
+This installs the skill files under `.agents/skills/` and symlinks each one into
+`.claude/skills/`, so both agents read a single copy. Do not add `--copy`: it
+materializes every `.claude/skills` entry as a duplicate directory, and the two
+copies then drift apart on the next update.
 
 ## What's here
 
