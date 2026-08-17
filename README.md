@@ -1,3 +1,6 @@
+> [!WARNING]
+> **This is unsupported AI slop!**
+
 # ikigenba skills
 
 Agent skills for **ikispec**, the ikigenba spec-first build system. Installable
